@@ -1,21 +1,22 @@
 <script setup>
-import { reactive, onMounted, onBeforeUnmount, ref } from 'vue'
+import { reactive, onMounted, onBeforeUnmount } from 'vue'
 import useModal from '@/hooks/useModal'
 import ModalLogin from '@/components/ModalLogin/index.vue'
 import ModalCreateAccount from '@/components/ModalCreateAccount/index.vue'
 
-const customModal = ref(null)
+const DEFAULT_WIDTH = 'w-3/4 lg:w-1/3'
+
+const state = reactive({
+  isActive: false,
+  component: {},
+  props: {},
+  width: DEFAULT_WIDTH,
+})
+
 const modalList = {
   ModalLogin,
   ModalCreateAccount,
 }
-
-const DEFAULT_WIDTH = 'w-3/4 lg:w-1/3'
-const state = reactive({
-  isActive: false,
-  props: {},
-  width: DEFAULT_WIDTH,
-})
 
 const modal = useModal()
 
@@ -29,10 +30,11 @@ onBeforeUnmount(() => {
 
 function handleModalToggle(payload) {
   if (payload.status) {
-    customModal.value = payload.component
+    state.component = payload.component
     state.props = payload.props
     state.width = payload.width ?? DEFAULT_WIDTH
   } else {
+    state.component = {}
     state.props = {}
     state.width = DEFAULT_WIDTH
   }
@@ -52,7 +54,7 @@ function handleModalToggle(payload) {
           class="flex flex-col overflow-hidden bg-white rounded-lg animate__animated animate__fadeInDown animate__faster"
         >
           <div class="flex flex-col px-12 py-10 bg-white">
-            <component :is="modalList[customModal]" />
+            <component :is="modalList[state.component]" />
           </div>
         </div>
       </div>
