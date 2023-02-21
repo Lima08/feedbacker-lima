@@ -1,3 +1,8 @@
+<script setup>
+import { defineEmits } from 'vue'
+const emit = defineEmits(['login', 'createAccount'])
+</script>
+
 <template>
   <header class="header">
     <div class="header-group">
@@ -12,11 +17,13 @@
 
         <div class="flex">
           <button
+            @click="emit('createAccount')"
             class="px-6 py-2 font-bold rounded-full text-white focus:outline-none"
           >
             Crie uma conta
           </button>
           <button
+            @click="emit('login')"
             class="px-6 py-2 font-bold rounded-full bg-white text-brand-main focus:outline-none"
           >
             Entrar
@@ -46,8 +53,6 @@
     </div>
   </header>
 </template>
-
-<script setup></script>
 
 <style lang="postcss" scoped>
 .header {
