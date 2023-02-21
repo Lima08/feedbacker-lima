@@ -1,13 +1,3 @@
-<!-- <template>
-  <div>
-
-  </div>
+<template>
+<p>Feedbacks</p>
 </template>
-
-<script setup>
-
-</script>
-
-<style lang="scss" scoped>
-
-</style> -->
