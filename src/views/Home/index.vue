@@ -13,14 +13,13 @@ onMounted(() => {
   }
 })
 
-function handleLogin () {
+function handleLogin() {
   console.log('login')
 }
 
-function createAccount () {
+function createAccount() {
   console.log('createAccount')
 }
-
 </script>
 
 <template>
@@ -28,6 +27,8 @@ function createAccount () {
   <contact />
 
   <div class="flex justify-center py-10 bg-brand-gray">
-    <p class="font-medium text-center text-gray-800">Feedbacker &copy; 2023 By Lima</p>
+    <p class="font-medium text-center text-gray-800">
+      Feedbacker &copy; 2023 By Lima
+    </p>
   </div>
 </template>
