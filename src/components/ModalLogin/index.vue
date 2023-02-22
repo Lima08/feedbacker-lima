@@ -6,8 +6,14 @@ import {
   validateEmptyAndLength3,
   validateEmptyAndEmail,
 } from '@/utils/validators'
+import services from '@/services'
+import { useRouter } from 'vue-router'
+import { useToast } from 'vue-toastification'
+import Icon from '@/components/Icon/index.vue'
 
 const modal = useModal()
+const router = useRouter()
+const toast = useToast()
 
 const { value: emailValue, errorMessage: emailErrorMessage } = useField(
   'email',
@@ -31,8 +37,41 @@ const state = reactive({
   },
 })
 
-function handleSubmit() {
-  console.log('Rodou')
+async function handleSubmit() {
+  try {
+    toast.clear()
+    state.isLoading = true
+    const { data, error } = await services.auth.login({
+      email: state.email.value,
+      password: state.password.value,
+    })
+
+    if (!error) {
+      console.log('#### sem erros ####')
+
+      window.localStorage.setItem('token', data.token)
+      router.push({ name: 'Feedbacks' })
+      state.isLoading = false
+      closeModal()
+      // TODO: colocar toaster aqui
+      return
+    }
+    console.log('###ERROR RESPONSE LOGIN ###', error)
+
+    if (error.status === 404 || error.status === 401) {
+      toast.error('Email/senha inválidos')
+    }
+
+    if (error.status === 400) {
+      toast.error('Erro ao fazer o login')
+    }
+
+    state.isLoading = false
+  } catch (error) {
+    state.isLoading = false
+    state.hasError = !!error
+    toast.error('Erro inesperado!! Tente novamente')
+  }
 }
 
 function closeModal() {
@@ -100,7 +139,8 @@ function closeModal() {
           :disabled="state.isLoading"
           :class="{ 'opacity-50': state.isLoading }"
         >
-          Entrar
+          <Icon v-if="state.isLoading" name="Loading" class="animate-spin" />
+          <span v-else>Entrar</span>
         </button>
       </div>
     </form>
