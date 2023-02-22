@@ -137,7 +137,7 @@ function closeModal() {
           class="bg-brand-main text-white py-3 px-8 rounded-full font-bold focus:outline-none transition-all duration-150"
           type="submit"
           :disabled="state.isLoading"
-          :class="{ 'opacity-50': state.isLoading }"
+          :class="{ 'opacity-50': state.isLoading, 'max-w-24': true }"
         >
           <Icon v-if="state.isLoading" name="Loading" class="animate-spin" />
           <span v-else>Entrar</span>

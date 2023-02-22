@@ -1,5 +1,4 @@
 export function validateEmptyAndLength3(value) {
-  console.log('validador ==>', value)
   if (!value) {
     return '* Este campo é obrigatório'
   }
@@ -11,7 +10,6 @@ export function validateEmptyAndLength3(value) {
 }
 
 export function validateEmptyAndEmail(value) {
-  console.log('validador ==>', value)
   if (!value) {
     return '* Este campo é obrigatório'
   }

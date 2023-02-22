@@ -4,11 +4,11 @@ import useModal from '@/hooks/useModal'
 import ModalLogin from '@/components/ModalLogin/index.vue'
 import ModalCreateAccount from '@/components/ModalCreateAccount/index.vue'
 
-const DEFAULT_WIDTH = 'w-3/4 lg:w-1/3'
+const DEFAULT_WIDTH = 'w-3/4 lg:w-2/4'
 
 const state = reactive({
   isActive: false,
-  component: {},
+  component: '',
   props: {},
   width: DEFAULT_WIDTH,
 })
@@ -49,7 +49,7 @@ function handleModalToggle(payload) {
       class="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full bg-black bg-opacity-50"
       @click="handleModalToggle({ status: false })"
     >
-      <div class="fixed mx-10" :class="state.width" @click.stop>
+      <div class="fixed mx-10 max-w-lg" :class="state.width" @click.stop>
         <div
           class="flex flex-col overflow-hidden bg-white rounded-lg animate__animated animate__fadeInDown animate__faster"
         >

@@ -1,7 +1,13 @@
 <script setup>
 import { defineProps } from 'vue'
 
-const props = defineProps(['size', 'color'])
+const props = defineProps({
+  size: { type: String, default: '22' },
+  color: {
+    type: String,
+    default: 'white',
+  },
+})
 </script>
 <template>
   <svg

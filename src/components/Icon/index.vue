@@ -10,4 +10,3 @@ const icons = {
 <template>
   <component :is="icons[props.name]" v-bind="props" />
 </template>
-<!--  TODO: Não está funcionando  -->
