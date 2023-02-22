@@ -24,4 +24,6 @@ httpClient.interceptors.response.use(
   },
 )
 
-export default { auth: authService(httpClient) }
+export default {
+  auth: authService(httpClient),
+}
