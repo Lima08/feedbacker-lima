@@ -47,16 +47,13 @@ async function handleSubmit() {
     })
 
     if (!error) {
-      console.log('#### sem erros ####')
-
-      window.localStorage.setItem('token', data.token)
-      router.push({ name: 'Feedbacks' })
       state.isLoading = false
+      window.localStorage.setItem('token', data.token)
       closeModal()
+      router.push({ name: 'Feedbacks' })
       // TODO: colocar toaster aqui
       return
     }
-    console.log('###ERROR RESPONSE LOGIN ###', error)
 
     if (error.status === 404 || error.status === 401) {
       toast.error('Email/senha inválidos')

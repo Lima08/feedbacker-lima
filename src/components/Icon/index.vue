@@ -1,6 +1,5 @@
 <script setup>
 import Loading from './Loading.vue'
-import { defineProps } from 'vue'
 
 const props = defineProps(['name', 'size', 'color'])
 const icons = {
