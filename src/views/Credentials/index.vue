@@ -1,14 +1,44 @@
 <script setup>
-import loggedHeader from '@/components/LoggedHeader/index.vue'
+import { reactive } from 'vue'
+import services from '@/services'
 import useStore from '@/hooks/useStore'
-import Icon from '@/components/Icon/index.vue'
+import loggedHeader from '@/components/LoggedHeader/index.vue'
 import ContentLoader from '@/components/ContentLoader/index.vue'
-import { ref } from 'vue'
+import Icon from '@/components/Icon/index.vue'
+import { setApiKey } from '@/store/user'
+import { useToast } from 'vue-toastification'
 
+const toast = useToast()
 const store = useStore()
-const state = ref({
+const state = reactive({
   isLoading: false,
 })
+
+async function handleGenerateApiToken() {
+  try {
+    toast.clear()
+    state.isLoading = true
+
+    const { data } = await services.user.generateApiToken()
+    setApiKey(data.apiKey)
+
+    toast.success('ApiKey gerada com sucesso!!')
+  } catch (error) {
+    toast.error('Erro ao gerar nova apiKey')
+  } finally {
+    state.isLoading = false
+  }
+}
+
+async function handleCopy() {
+  try {
+    toast.clear()
+    await navigator.clipboard.writeText(store.User.currentUser.apiKey)
+    toast.success('Copiado com sucesso!')
+  } catch (error) {
+    toast.error('Erro ao copiar')
+  }
+}
 </script>
 
 <template>
@@ -35,9 +65,9 @@ const state = ref({
 
       <content-loader
         v-if="store.Global.isLoading || state.isLoading"
-        class="rounded"
-        width="600px"
-        height="50px"
+        class="mb-10 rounded"
+        width="w-full lg:w-3/4"
+        height="40px"
       />
 
       <div
@@ -47,8 +77,13 @@ const state = ref({
         <span>{{ store.User.currentUser?.apiKey }}</span>
 
         <div class="flex ml-20 gap-3">
-          <Icon name="Copy" size="24" color="gray" />
-          <Icon name="Loading" size="24" color="gray" />
+          <Icon name="Copy" size="24" color="gray" @click="handleCopy" />
+          <Icon
+            name="Loading"
+            size="24"
+            color="gray"
+            @click="handleGenerateApiToken"
+          />
         </div>
       </div>
 
@@ -58,9 +93,9 @@ const state = ref({
 
       <content-loader
         v-if="store.Global.isLoading || state.isLoading"
-        class="rounded"
-        width="600px"
-        height="50px"
+        class="mb-10 rounded"
+        width="w-full lg:w-3/4"
+        height="40px"
       />
 
       <div

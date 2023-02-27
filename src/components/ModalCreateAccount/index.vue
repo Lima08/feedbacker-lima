@@ -69,15 +69,9 @@ async function handleSubmit() {
       password: state.password.value,
     })
 
-    if (!error) {
-      login()
-      // TODO: colocar toaster aqui
-      return
-    }
+    if (!error) login()
 
-    if (error.status === 400) {
-      toast.error('Erro ao criar a conta')
-    }
+    if (error.status === 400) toast.error('Erro ao criar a conta')
 
     state.isLoading = false
   } catch (error) {
