@@ -15,5 +15,5 @@ export function setCurrentUser(currentUser) {
 }
 
 export function setApiKey(apiKey) {
-  state.currentUser = { ...currentUser, apiKey }
+  state.currentUser = { ...state.currentUser, apiKey }
 }

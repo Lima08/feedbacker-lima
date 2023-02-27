@@ -1,3 +1,8 @@
+<script setup>
+import loggedHeader from '@/components/LoggedHeader/index.vue'
+</script>
+
 <template>
-<p>Feedbacks</p>
+  <logged-header />
+  <p>Feedbacks</p>
 </template>
