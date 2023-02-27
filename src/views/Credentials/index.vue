@@ -2,8 +2,13 @@
 import loggedHeader from '@/components/LoggedHeader/index.vue'
 import useStore from '@/hooks/useStore'
 import Icon from '@/components/Icon/index.vue'
+import ContentLoader from '@/components/ContentLoader/index.vue'
+import { ref } from 'vue'
 
-const store = useStore('User')
+const store = useStore()
+const state = ref({
+  isLoading: false,
+})
 </script>
 
 <template>
@@ -28,12 +33,20 @@ const store = useStore('User')
         Este aqui é a sua chave de api
       </p>
 
+      <content-loader
+        v-if="store.Global.isLoading || state.isLoading"
+        class="rounded"
+        width="600px"
+        height="50px"
+      />
+
       <div
         class="flex justify-between mb-10 bg-brand-gray rounded py-2 px-6 w-full lg:w-3/4"
+        v-else
       >
-        <span>{{ store.currentUser?.apiKey }}</span>
+        <span>{{ store.User.currentUser?.apiKey }}</span>
 
-        <div class="flex ml-20 mr-5">
+        <div class="flex ml-20 gap-3">
           <Icon name="Copy" size="24" color="gray" />
           <Icon name="Loading" size="24" color="gray" />
         </div>
@@ -42,12 +55,21 @@ const store = useStore('User')
       <p class="text-gray-800 text-lg font-regular">
         Coloque o script abaixo no seu site para começar a receber feedbacks
       </p>
+
+      <content-loader
+        v-if="store.Global.isLoading || state.isLoading"
+        class="rounded"
+        width="600px"
+        height="50px"
+      />
+
       <div
         class="py-3 pl-5 pr-20 mt-2 rounded bg-brand-gray w-full lg:w-3/4 overflow-x-scroll"
+        v-else
       >
         <pre>
 &lt;script src="http://lima08-feedbacker-widget.neflify.app?apikey={{
-            store.currentUser?.apiKey
+            store.User.currentUser?.apiKey
           }}/&gt;&lt;script&gt;&lt;/script&gt;</pre
         >
       </div>
