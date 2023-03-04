@@ -45,7 +45,7 @@ async function handleCopy() {
   <logged-header />
 
   <div class="flex justify-center items-center bg-brand-gray">
-    <div class="flex flex-col justify-center h-72 text-center">
+    <div class="flex flex-col justify-center h-64 text-center">
       <h1 class="font-black text-gray-800 text-4xl">Credenciais</h1>
       <p class="text-gray-800 text-lg font-regular">
         Guia de instalação e geração de suas credenciais

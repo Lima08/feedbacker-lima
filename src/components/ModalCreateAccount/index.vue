@@ -69,7 +69,7 @@ async function handleSubmit() {
       password: state.password.value,
     })
 
-    if (!error) login()
+    if (!error) return login()
 
     if (error.status === 400) toast.error('Erro ao criar a conta')
 
@@ -77,7 +77,7 @@ async function handleSubmit() {
   } catch (error) {
     state.isLoading = false
     state.hasError = !!error
-    toast.error('Erro inesperado!! Tente novamente')
+    toast.error('Erro inesperado! Tente novamente.')
   }
 }
 
