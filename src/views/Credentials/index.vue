@@ -59,7 +59,7 @@ async function handleCopy() {
         Instalação e configuração
       </h1>
 
-      <p class="text-gray-800 text-lg font-regular">
+      <p class="text-gray-800 text-lg font-regular mt-2">
         Este aqui é a sua chave de api
       </p>
 
