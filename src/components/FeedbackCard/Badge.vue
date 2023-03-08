@@ -1,4 +1,6 @@
 <script setup>
+import { computed } from 'vue'
+
 const props = defineProps({
   type: {
     require: true,
@@ -20,7 +22,10 @@ const classColor = computed(() => {
 </script>
 
 <template>
-  <span class="rounded-full p-2 text-xs font-black text-white uppercase" :class="classColor">
+  <span
+    class="rounded-full p-2 text-xs font-black text-white uppercase"
+    :class="`bg-${classColor}`"
+  >
     {{ label }}
   </span>
 </template>
