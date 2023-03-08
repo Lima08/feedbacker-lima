@@ -3,20 +3,6 @@ import { reactive } from 'vue'
 import useStore from '@/hooks/useStore'
 import services from '@/services'
 
-const LABELS = {
-  all: 'Todos',
-  issue: 'Problemas',
-  idea: 'Ideias',
-  other: 'Outros',
-}
-
-const COLORS = {
-  all: 'brand-info',
-  issue: 'brand-danger',
-  idea: 'brand-warning',
-  other: 'brand-graydark',
-}
-
 const emit = defineEmits(['select'])
 const store = useStore('Global')
 const state = reactive({
@@ -28,6 +14,19 @@ const state = reactive({
     },
   ],
 })
+
+const LABELS = {
+  all: 'Todos',
+  issue: 'Problemas',
+  idea: 'Ideias',
+  other: 'Outros',
+}
+const COLORS = {
+  all: 'brand-info',
+  issue: 'brand-danger',
+  idea: 'brand-warning',
+  other: 'brand-graydark',
+}
 
 function applyFiltersStructure(summary) {
   return Object.keys(summary).reduce((acc, cur) => {
