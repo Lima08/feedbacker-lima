@@ -44,6 +44,7 @@ const emit = defineEmits(['login', 'createAccount'])
         </p>
         <div>
           <button
+          @click="emit('createAccount')"
             class="px-6 py-2 font-bold mt-10 bg-white rounded-full text-brand-main focus:outline-none"
           >
             Crie uma conta grátis

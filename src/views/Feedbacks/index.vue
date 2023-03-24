@@ -144,7 +144,7 @@ onUnmounted(() => {
           v-if="
             !state.feedbacks.length &&
             !state.isLoading &&
-            state.isLoadingMoreFeedbacks &&
+            !state.isLoadingMoreFeedbacks &&
             !state.hasError
           "
           class="text-lg text-center text-gray-800 font-regular pt-10"
