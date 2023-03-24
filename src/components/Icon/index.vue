@@ -1,13 +1,13 @@
 <script setup>
 import Loading from './Loading.vue'
 import Copy from './Copy.vue'
-import ArrowDown from './ArrowDown.vue'
+import ChevronDown from './ChevronDown.vue'
 
 const props = defineProps(['name', 'size', 'color'])
 const icons = {
   Loading,
   Copy,
-  ArrowDown,
+  ChevronDown,
 }
 </script>
 <template>

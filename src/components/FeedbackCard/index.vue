@@ -78,7 +78,7 @@ async function handleToggle() {
 
     <div class="relative w-full" v-else>
       <span class="absolute bottom-2 right-2"
-        ><icon name="ArrowDown" color="#7E7E7E"
+        ><icon name="ChevronDown" color="#7E7E7E"
       /></span>
     </div>
   </div>

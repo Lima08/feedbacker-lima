@@ -1,7 +1,7 @@
 <script setup>
 import { reactive } from 'vue'
 import useStore from '@/hooks/useStore'
-import services from '@/services'
+// import services from '@/services'
 
 const emit = defineEmits(['select'])
 const store = useStore('Global')
@@ -46,8 +46,9 @@ function applyFiltersStructure(summary) {
 }
 
 try {
-  const { data } = await services.feedbacks.getSummary()
-  state.filters = applyFiltersStructure(data)
+  // const { data } = await services.feedbacks.getSummary()
+  throw new Error('test')
+  // state.filters = applyFiltersStructure(data)
 } catch (error) {
   state.hasError = !!error
   state.filters = applyFiltersStructure({

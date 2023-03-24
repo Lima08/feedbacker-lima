@@ -87,7 +87,7 @@ function closeModal() {
 </script>
 
 <template>
-  <div class="flex justify-between">
+  <div class="flex justify-between" id="create-account-modal">
     <h1 class="font-black text-gray-800 text-4xl">Crie sua conta</h1>
 
     <button

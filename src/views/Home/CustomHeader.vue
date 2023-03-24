@@ -16,6 +16,7 @@ const emit = defineEmits(['login', 'createAccount'])
 
         <div class="flex">
           <button
+          id="cta-create-account-button"
             @click="emit('createAccount')"
             class="px-6 py-2 font-bold rounded-full text-white focus:outline-none"
           >

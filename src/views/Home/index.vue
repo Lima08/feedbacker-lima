@@ -1,6 +1,6 @@
 <script setup>
 import CustomHeader from '@/views/Home/CustomHeader.vue'
-import Contact from '@/views/Home//Contact.vue'
+import Contact from '@/views/Home/Contact.vue'
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import useModal from '@/hooks/useModal'
